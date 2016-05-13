@@ -62,13 +62,25 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).doesNotContain("U2");
   }
 
-  // @Test
-  // public void venueIsCreatedAndSavedTest() {
-  //   goTo("http://localhost:4567/");
-  //   fill("#venue_input").with("Park Block");
-  //   submit(".btn");
-  //   assertEquals(1, Venue.all().size());
-  // }
+  @Test
+  public void bandIsUpdatedTest() {
+    Band testBand = new Band("U2");
+    testBand.save();
+    goTo("http://localhost:4567/bands");
+    click("option", withText("U2"));
+    fill("#input_update_band").with("Gun N Roses");
+    submit("#update_button");
+    assertThat(pageSource()).contains("Gun N Roses");
+  }
+
+  @Test
+  public void bandShowPageDisplaysName() {
+    Category testCategory = new Category("Household chores");
+    testCategory.save();
+    String url = String.format("http://localhost:4567/categories/%d", testCategory.getId());
+    goTo(url);
+    assertThat(pageSource()).contains("Household chores");
+  }
   //
   // @Test
   // public void venueIsAddedToBandTest() {
@@ -93,13 +105,4 @@ public class AppTest extends FluentTest {
   //   assertThat(pageSource()).contains("U2 Classic");
   // }
   //
-  // @Test
-  // public void bandNameIsDeletedTest() {
-  //   Band testBand = new Band("U2");
-  //   testBand.save();
-  //   String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
-  //   goTo(url);
-  //   click("a", withText("Delete"));
-  //   assertThat(pageSource()).doesNotContain("U2");
-  // }
 }

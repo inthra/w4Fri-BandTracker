@@ -37,9 +37,21 @@ public class App {
     post("/bands/delete", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String delete_band = request.queryParams("delete_band");
-      Band band = Band.find(Integer.parseInt(delete_band));
       if (!(delete_band.equals(""))) {
+        Band band = Band.find(Integer.parseInt(delete_band));
         band.delete();
+      }
+      response.redirect("/bands");
+      return null;
+    });
+
+    post("/bands/update", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String selectedBand = request.queryParams("update_band");
+      String inputUpdate = request.queryParams("input_update_band");
+      if (!(selectedBand.equals(""))) {
+        Band band = Band.find(Integer.parseInt(selectedBand));
+        band.update(inputUpdate);
       }
       response.redirect("/bands");
       return null;
