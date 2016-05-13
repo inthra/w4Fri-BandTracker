@@ -27,7 +27,9 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       String input_band = request.queryParams("input_band");
       Band newBand = new Band(input_band);
-      newBand.save();
+      if ((newBand.getName()).trim().length() != 0) {
+        newBand.save();
+      }
       response.redirect("/bands");
       return null;
     });

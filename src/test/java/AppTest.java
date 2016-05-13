@@ -30,6 +30,13 @@ public class AppTest extends FluentTest {
   }
 
   @Test
+  public void bandDoesNotExistTest() {
+    goTo("http://localhost:4567/");
+    click("a", withText("Bands"));
+    assertThat(pageSource()).contains("Currently, no band in databases");
+  }
+
+  @Test
   public void bandIsCreatedAndDisplayedTest() {
     goTo("http://localhost:4567/bands");
     fill("#input_band").with("U2");
@@ -37,7 +44,7 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("U2");
   }
 
-  
+
 
   // @Test
   // public void venueIsCreatedAndSavedTest() {
