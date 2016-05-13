@@ -34,5 +34,16 @@ public class App {
       return null;
     });
 
+    post("/bands/delete", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String delete_band = request.queryParams("delete_band");
+      Band band = Band.find(Integer.parseInt(delete_band));
+      if (!(delete_band.equals(""))) {
+        band.delete();
+      }
+      response.redirect("/bands");
+      return null;
+    });
+
   }
 }

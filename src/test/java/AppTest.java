@@ -52,6 +52,16 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).doesNotContain("U2");
   }
 
+  @Test
+  public void bandIsDeletedTest() {
+    goTo("http://localhost:4567/bands");
+    fill("#input_band").with("U2");
+    submit("#add_button");
+    click("option", withText("U2"));
+    submit("#delete_button");
+    assertThat(pageSource()).doesNotContain("U2");
+  }
+
   // @Test
   // public void venueIsCreatedAndSavedTest() {
   //   goTo("http://localhost:4567/");
