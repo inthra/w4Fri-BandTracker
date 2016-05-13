@@ -1,4 +1,4 @@
-# _Advance databases independent project: Band Tracker_
+# Advance databases independent project: Band Tracker
 
 #### _A program to track bands and the venues where they've played concerts., May 13, 2016_
 
@@ -6,9 +6,9 @@
 
 ## Description
 
-_A program to track bands and the venues where they've played concerts. Users are be able to add, update, delete, and list all bands. Users are be able to add venues to databases. Also, the venues can be added to a band to show where they have played. Users will be able to view all venues that linked to a band and show on the individual band page.
+A program to track bands and the venues where they've played concerts. Users are be able to add, update, delete, and list all bands. Users are be able to add venues to databases. Also, the venues can be added to a band to show where they have played. Users will be able to view all venues that linked to a band and show on the individual band page.
 
-Bands and venues can't be saved if a user leave the blank input field._
+* Bands and venues can't be saved if a user leave the blank input field.
 
 ## Setup/Installation Requirements
 
