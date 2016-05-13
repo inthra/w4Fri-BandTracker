@@ -65,37 +65,37 @@ public class VenueTest {
     assertEquals("Providence Park", Venue.find(myVenue.getId()).getName());
   }
 
-  // @Test
-  // public void addBand_addsBandToVenue_true() {
-  //   Venue myVenue = new Venue("Central Park");
-  //   myVenue.save();
-  //   Band myBand = new Band("AC/DC");
-  //   myBand.save();
-  //   myVenue.addBand(myBand);
-  //   Band savedBand = myVenue.getBands().get(0);
-  //   assertTrue(myBand.equals(savedBand));
-  // }
-  //
-  // @Test
-  // public void getBands_returnsAllBands_List() {
-  //   Venue myVenue = new Venue("Central Park");
-  //   myVenue.save();
-  //   Band myBand = new Band("AC/DC");
-  //   myBand.save();
-  //   myVenue.addBand(myBand);
-  //   List savedBands = myVenue.getBands();
-  //   assertEquals(1, savedBands.size());
-  // }
-  //
-  // @Test
-  // public void delete_deletesAllBandsAndVenuesAssociations() {
-  //   Venue myVenue = new Venue("Central Park");
-  //   myVenue.save();
-  //   Band myBand = new Band("Providence Park");
-  //   myBand.save();
-  //   myVenue.addBand(myBand);
-  //   myVenue.delete();
-  //   assertEquals(0, Venue.all().size());
-  //   assertEquals(0, myBand.getVenues().size());
-  // }
+  @Test
+  public void addBand_addsBandToVenue_true() {
+    Venue myVenue = new Venue("Central Park");
+    myVenue.save();
+    Band myBand = new Band("AC/DC");
+    myBand.save();
+    myVenue.addBand(myBand);
+    Band savedBand = myVenue.getBands().get(0);
+    assertTrue(myBand.equals(savedBand));
+  }
+
+  @Test
+  public void getBands_returnsAllBands_List() {
+    Venue myVenue = new Venue("Central Park");
+    myVenue.save();
+    Band myBand = new Band("AC/DC");
+    myBand.save();
+    myVenue.addBand(myBand);
+    List savedBands = myVenue.getBands();
+    assertEquals(1, savedBands.size());
+  }
+
+  @Test
+  public void delete_deletesAllBandsAndVenuesAssociations() {
+    Venue myVenue = new Venue("Central Park");
+    myVenue.save();
+    Band myBand = new Band("Providence Park");
+    myBand.save();
+    myVenue.addBand(myBand);
+    myVenue.delete();
+    assertEquals(0, Venue.all().size());
+    assertEquals(0, myBand.getVenues().size());
+  }
 }
