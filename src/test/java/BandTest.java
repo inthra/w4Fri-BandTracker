@@ -17,9 +17,9 @@ public class BandTest {
   }
 
   @Test
-  public void getBandName_tagInstantiatesWithBandName_String() {
+  public void getName_tagInstantiatesWithBandName_String() {
     Band myBand = new Band("AC/DC");
-    assertEquals("AC/DC", myBand.getBandName());
+    assertEquals("AC/DC", myBand.getName());
   }
 
   @Test
@@ -46,14 +46,14 @@ public class BandTest {
     Band myBand = new Band("AC/DC");
     myBand.save();
     Band savedBand = Band.all().get(0);
-    assertEquals(myBand.getBandId(), savedBand.getBandId());
+    assertEquals(myBand.getId(), savedBand.getId());
   }
 
   @Test
   public void find_findBandInDatabase_true() {
     Band myBand = new Band("AC/DC");
     myBand.save();
-    Band savedBand = Band.find(myBand.getBandId());
+    Band savedBand = Band.find(myBand.getId());
     assertTrue(myBand.equals(savedBand));
   }
 
@@ -62,7 +62,7 @@ public class BandTest {
     Band myBand = new Band("AC/DC");
     myBand.save();
     myBand.update("Linkin Park");
-    assertEquals("Linkin Park", Band.find(myBand.getBandId()).getBandName());
+    assertEquals("Linkin Park", Band.find(myBand.getId()).getName());
   }
 
   // @Test

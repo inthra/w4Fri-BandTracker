@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 public class Band {
   private int id;
-  private String band_name;
+  private String name;
 
   public Band(String name) {
-  this.band_name = name;
+  this.name = name;
   }
 
-  public String getBandName() {
-    return band_name;
+  public String getName() {
+    return name;
   }
 
-  public int getBandId() {
+  public int getId() {
     return id;
   }
 
@@ -31,15 +31,15 @@ public class Band {
       return false;
     } else {
       Band newBand = (Band) otherBand;
-      return this.getBandName().equals(newBand.getBandName()) && this.getBandId() == newBand.getBandId();
+      return this.getName().equals(newBand.getName()) && this.getId() == newBand.getId();
     }
   }
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO bands(band_name) VALUES (:name);";
+      String sql = "INSERT INTO bands(name) VALUES (:name);";
       this.id = (int) con.createQuery(sql, true)
-        .addParameter("name", this.band_name)
+        .addParameter("name", this.name)
         .executeUpdate()
         .getKey();
     }
@@ -55,13 +55,13 @@ public class Band {
     }
   }
 
-  public void update(String band_name) {
-    if (band_name.trim().length() != 0) {
+  public void update(String name) {
+    if (name.trim().length() != 0) {
       try(Connection con = DB.sql2o.open()) {
-        String sql = "UPDATE bands SET band_name = :name WHERE id = :id;";
+        String sql = "UPDATE bands SET name = :name WHERE id = :id;";
         con.createQuery(sql)
-          .addParameter("name", band_name)
-          .addParameter("id", this.getBandId())
+          .addParameter("name", name)
+          .addParameter("id", this.getId())
           .executeUpdate();
       }
     }
@@ -71,7 +71,7 @@ public class Band {
   //   try(Connection con = DB.sql2o.open()) {
   //     String sql = "INSERT INTO bands_venues (band_id, venue_id) VALUES (:band_id, :venue_id)";
   //     con.createQuery(sql)
-  //       .addParameter("band_id", this.getBandId())
+  //       .addParameter("band_id", this.getId())
   //       .addParameter("venue_id", venue.getVenueId())
   //       .executeUpdate();
   //   }
@@ -81,7 +81,7 @@ public class Band {
   //   try(Connection con = DB.sql2o.open()){
   //     String joinQuery = "SELECT venue_id FROM bands_venues WHERE band_id = :band_id";
   //     List<Integer> venue_ids = con.createQuery(joinQuery)
-  //       .addParameter("band_id", this.getBandId())
+  //       .addParameter("band_id", this.getId())
   //       .executeAndFetch(Integer.class);
   //
   //     List<Venue> venues = new ArrayList<Venue>();
@@ -101,12 +101,12 @@ public class Band {
   //   try(Connection con = DB.sql2o.open()) {
   //     String deleteQuery = "DELETE FROM bands WHERE id = :id;";
   //       con.createQuery(deleteQuery)
-  //         .addParameter("id", this.getBandId())
+  //         .addParameter("id", this.getId())
   //         .executeUpdate();
   //
   //     String joinDeleteQuery = "DELETE FROM bands_venues WHERE band_id = :band_id";
   //       con.createQuery(joinDeleteQuery)
-  //         .addParameter("band_id", this.getBandId())
+  //         .addParameter("band_id", this.getId())
   //         .executeUpdate();
   //   }
   // }
