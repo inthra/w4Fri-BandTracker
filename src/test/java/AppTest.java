@@ -44,7 +44,13 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("U2");
   }
 
-
+  @Test
+  public void blankInputFieldIsAddedTest() {
+    goTo("http://localhost:4567/bands");
+    fill("#input_band").with("");
+    submit("#add_button");
+    assertThat(pageSource()).doesNotContain("U2");
+  }
 
   // @Test
   // public void venueIsCreatedAndSavedTest() {
