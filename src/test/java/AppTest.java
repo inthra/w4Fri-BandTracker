@@ -135,20 +135,21 @@ public class AppTest extends FluentTest {
     goTo(url);
     assertThat(pageSource()).contains("Pioneer Square");
   }
-  
+
 // Join table test section --------------------
-  //
-  // @Test
-  // public void venueIsAddedToBandTest() {
-  //   Band testBand = new Band("U2");
-  //   testBand.save();
-  //   String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
-  //   goTo(url);
-  //   fill("#venue_input").with("Park Block");
-  //   submit("#add_venue");
-  //   assertThat(pageSource()).contains("Park Block");
-  // }
-  //
+  @Test
+  public void venueIsAddedToBandTest() {
+    Band testBand = new Band("U2");
+    testBand.save();
+    Venue testVenue = new Venue("Rose Garden");
+    testVenue.save();
+    String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
+    goTo(url);
+    click("option", withText("Rose Garden"));
+    submit("#addVenewToBand");
+    assertThat(pageSource()).contains("Rose Garden");
+  }
+
   // @Test
   // public void bandNameIsUpdatedTest() {
   //   Band testBand = new Band("U2");

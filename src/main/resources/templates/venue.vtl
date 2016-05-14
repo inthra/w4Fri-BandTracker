@@ -8,7 +8,7 @@
 <div class="row">
   #if ($venue.getBands().size() != 0)
     <div class="col-sm-5">
-      <h3>Here are the venues for this venue:</h3>
+      <h3>The venues for this venue:</h3>
       <ul>
         #foreach($venue in $venue.getBands())
           <li>$venue.getName()</li>
@@ -30,7 +30,7 @@
         </select>
         <br>
         <br>
-        <button type="submit" class="btn btn-info">Add venue to this venue</button>
+        <button id="addBandToVenue" type="submit" class="btn btn-info">Add venue to this venue</button>
       </form>
     </div>
   #end
