@@ -123,7 +123,7 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       int bandId = Integer.parseInt(request.params(":band_id"));
       Band band = Band.find(bandId);
-      
+
       String[] selectedVenueId = request.queryParamsValues("venue_id");
       for (String strId : selectedVenueId) {
         Venue venue = Venue.find(Integer.parseInt(strId));
@@ -136,10 +136,13 @@ public class App {
     post("/venues/:venue_id/add_bands", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       int venueId = Integer.parseInt(request.params(":venue_id"));
-      int selectedBandId = Integer.parseInt(request.queryParams("band_id"));
-      Band band = Band.find(selectedBandId);
       Venue venue = Venue.find(venueId);
-      venue.addBand(band);
+
+      String[] selectedBandId = request.queryParamsValues("band_id");
+      for (String strId : selectedBandId) {
+        Band band = Band.find(Integer.parseInt(strId));
+        venue.addBand(band);
+      }
       response.redirect("/venues/" + venueId);
       return null;
     });

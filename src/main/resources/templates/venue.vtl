@@ -22,16 +22,13 @@
       <h3>Add a band to this venue:</h3>
 
       <form action="/venues/$venue.getId()/add_bands" method="post">
-        <label for="band_id">Select a venue</label>
-        <select id="band_id" name="band_id" type="text">
-          #foreach($band in $allBands)
-            <option value="$band.getId()"> $band.getName() </option>
-          #end
-        </select>
-        <br>
+        #foreach($band in $allBands)
+          <input type="checkbox" class="band_id" name="band_id" value="$band.getId()"> $band.getName()<br>
+        #end
         <br>
         <button id="addBandToVenue" type="submit" class="btn btn-info">Add band to this venue</button>
       </form>
+      
     </div>
   #end
 </div>

@@ -145,7 +145,7 @@ public class AppTest extends FluentTest {
     testVenue.save();
     String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
     goTo(url);
-    fill(".venue_id").with("Rose Garden");
+    fill(".venue_id").with("Rose Garden"); // This will test checkbox value
     submit("#addVenewToBand");
     assertThat(pageSource()).contains("Rose Garden");
   }
@@ -158,7 +158,7 @@ public class AppTest extends FluentTest {
     testVenue.save();
     String url = String.format("http://localhost:4567/venues/%d", testVenue.getId());
     goTo(url);
-    click("option", withText("U2"));
+    fill(".band_id").with("U2"); // This will test checkbox value
     submit("#addVenueToBand");
     assertThat(pageSource()).contains("U2");
   }
