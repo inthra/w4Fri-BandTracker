@@ -28,7 +28,7 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Bands");
     assertThat(pageSource()).contains("Venues");
   }
-
+// Band test section ---------------
   @Test
   public void bandDoesNotExistTest() {
     goTo("http://localhost:4567/");
@@ -45,7 +45,7 @@ public class AppTest extends FluentTest {
   }
 
   @Test
-  public void blankInputFieldIsAddedTest() {
+  public void bandBlankInputFieldIsAddedTest() {
     goTo("http://localhost:4567/bands");
     fill("#input_band").with("");
     submit("#add_button");
@@ -75,12 +75,67 @@ public class AppTest extends FluentTest {
 
   @Test
   public void bandShowPageDisplaysName() {
-    Category testCategory = new Category("Household chores");
-    testCategory.save();
-    String url = String.format("http://localhost:4567/categories/%d", testCategory.getId());
+    Band testBand = new Band("AC/DC");
+    testBand.save();
+    String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
     goTo(url);
-    assertThat(pageSource()).contains("Household chores");
+    assertThat(pageSource()).contains("AC/DC");
   }
+
+// Venue test section --------------
+  @Test
+  public void venueDoesNotExistTest() {
+    goTo("http://localhost:4567/");
+    click("a", withText("Venues"));
+    assertThat(pageSource()).contains("Currently, no venue in databases");
+  }
+
+  @Test
+  public void venueIsCreatedAndDisplayedTest() {
+    goTo("http://localhost:4567/venues");
+    fill("#input_venue").with("Rose Garden");
+    submit("#add_button");
+    assertThat(pageSource()).contains("Rose Garden");
+  }
+
+  @Test
+  public void venueBlankInputFieldIsAddedTest() {
+    goTo("http://localhost:4567/venues");
+    fill("#input_venue").with("");
+    submit("#add_button");
+    assertThat(pageSource()).doesNotContain("Rose Garden");
+  }
+
+  @Test
+  public void venueIsDeletedTest() {
+    goTo("http://localhost:4567/venues");
+    fill("#input_venue").with("Rose Garden");
+    submit("#add_button");
+    click("option", withText("Rose Garden"));
+    submit("#delete_button");
+    assertThat(pageSource()).doesNotContain("Rose Garden");
+  }
+
+  @Test
+  public void venueIsUpdatedTest() {
+    Venue testVenue = new Venue("Rose Garden");
+    testVenue.save();
+    goTo("http://localhost:4567/venues");
+    click("option", withText("Rose Garden"));
+    fill("#input_update_venue").with("Pioneer Square");
+    submit("#update_button");
+    assertThat(pageSource()).contains("Pioneer Square");
+  }
+
+  @Test
+  public void venueShowPageDisplaysName() {
+    Venue testVenue = new Venue("Pioneer Square");
+    testVenue.save();
+    String url = String.format("http://localhost:4567/venues/%d", testVenue.getId());
+    goTo(url);
+    assertThat(pageSource()).contains("Pioneer Square");
+  }
+////////////////////////////////////////////////
   //
   // @Test
   // public void venueIsAddedToBandTest() {
