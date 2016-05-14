@@ -40,7 +40,7 @@ public class AppTest extends FluentTest {
   public void bandIsCreatedAndDisplayedTest() {
     goTo("http://localhost:4567/bands");
     fill("#input_band").with("U2");
-    submit("#add_button");
+    submit("#add_button_band");
     assertThat(pageSource()).contains("U2");
   }
 
@@ -48,7 +48,7 @@ public class AppTest extends FluentTest {
   public void bandBlankInputFieldIsAddedTest() {
     goTo("http://localhost:4567/bands");
     fill("#input_band").with("");
-    submit("#add_button");
+    submit("#add_button_band");
     assertThat(pageSource()).doesNotContain("U2");
   }
 
@@ -56,9 +56,9 @@ public class AppTest extends FluentTest {
   public void bandIsDeletedTest() {
     goTo("http://localhost:4567/bands");
     fill("#input_band").with("U2");
-    submit("#add_button");
+    submit("#add_button_band");
     click("option", withText("U2"));
-    submit("#delete_button");
+    submit("#delete_button_band");
     assertThat(pageSource()).doesNotContain("U2");
   }
 
@@ -69,7 +69,7 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/bands");
     click("option", withText("U2"));
     fill("#input_update_band").with("Gun N Roses");
-    submit("#update_button");
+    submit("#update_button_band");
     assertThat(pageSource()).contains("Gun N Roses");
   }
 
@@ -94,7 +94,7 @@ public class AppTest extends FluentTest {
   public void venueIsCreatedAndDisplayedTest() {
     goTo("http://localhost:4567/venues");
     fill("#input_venue").with("Rose Garden");
-    submit("#add_button");
+    submit("#add_button_venue");
     assertThat(pageSource()).contains("Rose Garden");
   }
 
@@ -102,7 +102,7 @@ public class AppTest extends FluentTest {
   public void venueBlankInputFieldIsAddedTest() {
     goTo("http://localhost:4567/venues");
     fill("#input_venue").with("");
-    submit("#add_button");
+    submit("#add_button_venue");
     assertThat(pageSource()).doesNotContain("Rose Garden");
   }
 
@@ -110,9 +110,9 @@ public class AppTest extends FluentTest {
   public void venueIsDeletedTest() {
     goTo("http://localhost:4567/venues");
     fill("#input_venue").with("Rose Garden");
-    submit("#add_button");
+    submit("#add_button_venue");
     click("option", withText("Rose Garden"));
-    submit("#delete_button");
+    submit("#delete_button_venue");
     assertThat(pageSource()).doesNotContain("Rose Garden");
   }
 
@@ -123,7 +123,7 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/venues");
     click("option", withText("Rose Garden"));
     fill("#input_update_venue").with("Pioneer Square");
-    submit("#update_button");
+    submit("#update_button_venue");
     assertThat(pageSource()).contains("Pioneer Square");
   }
 

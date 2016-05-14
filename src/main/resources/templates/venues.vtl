@@ -1,0 +1,70 @@
+<h1>Venues</h1>
+<hr>
+
+<div class="row">
+  <div class="col-sm-5">
+    <h2>List Venues</h2>
+    #if ($venues.size() != 0)
+      <ul>
+        #foreach ($venue in $venues)
+          <li><a href="/venues/$venue.getId()">$venue.getName()</a></li>
+        #end
+      </ul>
+    #else
+      Currently, no venue in databases.
+    #end
+  </div>
+
+  <div class="col-sm-5">
+    <div class="add_name row">
+      <form action="/venues/new" method="post">
+        <label for="input_venue">Add a New Venue</label>
+        <input id="input_venue" name="input_venue" type="text" class="form-control">
+        <br>
+        <button id="add_button_venue" type="submit" class="btn btn-success">Add</button>
+      </form>
+    </div>
+
+    #if ($venues.size() != 0)
+      <hr>
+      <div class="update_name row">
+        <form action="/venues/update" method="post" class="form-group">
+          <div>
+            <label for="update_venue">Select a Venue to Update</label>
+            <select id="update_venue" name="update_venue" type="text">
+              <option value="">Please select a venue</option>
+              #foreach($venue in $venues)
+                <option value="$venue.getId()">$venue.getName()</option>
+              #end
+            </select>
+          </div>
+
+          <br>
+          <div>
+            <label for="input_update_venue">Update here</label>
+            <input id="input_update_venue" name="input_update_venue" type="text" class="form-control">
+          </div>
+
+          <br>
+          <button id="update_button_venue" type="submit" class="btn btn-warning">Update</button>
+        </form>
+      </div>
+
+      <hr>
+      <div class="delete row">
+        <form action="/venues/delete" method="post" class="form-group">
+          <label for="delete_venue">Select a Venue to Delete</label>
+          <select id="delete_venue" name="delete_venue" type="text">
+            <option value="">Please select a venue</option>
+            #foreach($venue in $venues)
+              <option value="$venue.getId()">$venue.getName()</option>
+            #end
+          </select>
+          <br>
+          <button id="delete_button_venue" type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    #end
+
+  </div>
+</div>
