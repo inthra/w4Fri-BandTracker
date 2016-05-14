@@ -163,16 +163,4 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("U2");
   }
 
-  // @Test
-  // public void bandNameIsUpdatedTest() {
-  //   Band testBand = new Band("U2");
-  //   testBand.save();
-  //   String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
-  //   goTo(url);
-  //   fill("#update_band").with("U2 Classic");
-  //   submit("#update_band_button");
-  //   goTo(url);
-  //   assertThat(pageSource()).contains("U2 Classic");
-  // }
-  //
 }

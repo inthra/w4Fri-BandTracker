@@ -1,3 +1,10 @@
-.jumbotron {
-  margin-top: 20px;
+body {
+  background-image: url("concert.jpg");
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+#home {
+  font-size: 70px;
+  color: #cc3300;
 }
