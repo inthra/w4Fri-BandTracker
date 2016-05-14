@@ -98,4 +98,18 @@ public class BandTest {
     assertEquals(0, Band.all().size());
     assertEquals(0, myVenue.getBands().size());
   }
+
+// Add-On feature --------------------
+  @Test
+  public void sortASC_sortsBandNameByAscending_List() {
+    Band firstBand = new Band("Linkin Park");
+    firstBand.save();
+    Band secondBand = new Band("AC/DC");
+    secondBand.save();
+    Band thirdBand = new Band("The Beatles");
+    thirdBand.save();
+    List sortedBand = Band.sortASC();
+    assertEquals(secondBand, sortedBand.get(0));
+  }
+
 }

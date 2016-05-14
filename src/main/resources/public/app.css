@@ -8,3 +8,7 @@ body {
   font-size: 70px;
   color: #cc3300;
 }
+
+#add_button_band, #update_button_band, #delete_button_band, #add_button_venue, #update_button_venue, #delete_button_venue {
+  width: 80px;
+}

@@ -163,4 +163,6 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("U2");
   }
 
+// Add-On feature --------------------
+
 }

@@ -110,4 +110,12 @@ public class Band {
           .executeUpdate();
     }
   }
+
+// Add-On feature --------------------
+  public static List<Band> sortASC() {
+    try(Connection con = DB.sql2o.open()) {
+      String sortQuery = "SELECT * FROM bands ORDER BY name";
+        return con.createQuery(sortQuery).executeAndFetch(Band.class);
+    }
+  }
 }
