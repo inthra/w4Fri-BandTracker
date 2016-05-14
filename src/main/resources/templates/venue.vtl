@@ -8,7 +8,7 @@
 <div class="row">
   #if ($venue.getBands().size() != 0)
     <div class="col-sm-5">
-      <h3>The venues for this venue:</h3>
+      <h3>The bands for this venue:</h3>
       <ul>
         #foreach($venue in $venue.getBands())
           <li>$venue.getName()</li>
@@ -21,16 +21,16 @@
     <div class="col-sm-5">
       <h3>Add a band to this venue:</h3>
 
-      <form action="/add_bands" method="post">
-        <label for="venue_id">Select a venue</label>
-        <select id="venue_id" name="venue_id" type="text">
-          #foreach($venue in $allBands)
-            <option value="$venue.getId()"> $venue.getName() </option>
+      <form action="/venues/$venue.getId()/add_bands" method="post">
+        <label for="band_id">Select a venue</label>
+        <select id="band_id" name="band_id" type="text">
+          #foreach($band in $allBands)
+            <option value="$band.getId()"> $band.getName() </option>
           #end
         </select>
         <br>
         <br>
-        <button id="addBandToVenue" type="submit" class="btn btn-info">Add venue to this venue</button>
+        <button id="addBandToVenue" type="submit" class="btn btn-info">Add band to this venue</button>
       </form>
     </div>
   #end

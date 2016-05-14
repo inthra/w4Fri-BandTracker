@@ -129,5 +129,16 @@ public class App {
       response.redirect("/bands/" + bandId);
       return null;
     });
+
+    post("/venues/:venue_id/add_bands", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      int venueId = Integer.parseInt(request.params(":venue_id"));
+      int selectedBandId = Integer.parseInt(request.queryParams("band_id"));
+      Band band = Band.find(selectedBandId);
+      Venue venue = Venue.find(venueId);
+      venue.addBand(band);
+      response.redirect("/venues/" + venueId);
+      return null;
+    });
   }
 }
