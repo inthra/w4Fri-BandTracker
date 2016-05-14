@@ -110,4 +110,11 @@ public class Venue {
           .executeUpdate();
     }
   }
+// Add-On feature --------------------
+  public static List<Venue> sortASC() {
+    try(Connection con = DB.sql2o.open()) {
+      String sortQuery = "SELECT * FROM venues ORDER BY name";
+        return con.createQuery(sortQuery).executeAndFetch(Venue.class);
+    }
+  }
 }

@@ -98,4 +98,17 @@ public class VenueTest {
     assertEquals(0, Venue.all().size());
     assertEquals(0, myBand.getVenues().size());
   }
+
+// Add-On feature --------------------
+  @Test
+  public void sortASC_sortsVenueNameByAscending_List() {
+    Venue firstVenue = new Venue("Central Park");
+    firstVenue.save();
+    Venue secondVenue = new Venue("Providence Park");
+    secondVenue.save();
+    Venue thirdVenue = new Venue("Aladdin Theater");
+    thirdVenue.save();
+    List sortedVenue = Venue.sortASC();
+    assertEquals(thirdVenue, sortedVenue.get(0));
+  }
 }

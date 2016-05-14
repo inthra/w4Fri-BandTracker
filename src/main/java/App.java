@@ -62,7 +62,7 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       Band band = Band.find(Integer.parseInt(request.params(":band_id")));
       model.put("band", band);
-      model.put("allVenues", Venue.all());
+      model.put("allVenues", Venue.sortASC());  // Change .all() to .sortASC() method
       model.put("template", "templates/band.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -70,7 +70,7 @@ public class App {
 // Venue section ------------------------------
     get("/venues", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("venues", Venue.all());
+      model.put("venues", Venue.sortASC());  // Change .all() to .sortASC() method
       model.put("template", "templates/venues.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -113,7 +113,7 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       Venue venue = Venue.find(Integer.parseInt(request.params(":venue_id")));
       model.put("venue", venue);
-      model.put("allBands", Band.all());
+      model.put("allBands", Band.sortASC());  // Change .all() to .sortASC() method
       model.put("template", "templates/venue.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());

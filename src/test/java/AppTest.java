@@ -162,7 +162,4 @@ public class AppTest extends FluentTest {
     submit("#addVenueToBand");
     assertThat(pageSource()).contains("U2");
   }
-
-// Add-On feature --------------------
-
 }
