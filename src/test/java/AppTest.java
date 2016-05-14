@@ -145,7 +145,7 @@ public class AppTest extends FluentTest {
     testVenue.save();
     String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
     goTo(url);
-    click("option", withText("Rose Garden"));
+    fill(".venue_id").with("Rose Garden");
     submit("#addVenewToBand");
     assertThat(pageSource()).contains("Rose Garden");
   }

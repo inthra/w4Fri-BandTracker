@@ -3,12 +3,13 @@ body {
   background-repeat: no-repeat;
   background-position: top;
 }
-
+h1 {
+  font-size: 50px;
+}
 #home {
   font-size: 70px;
   color: #cc3300;
 }
-
 #add_button_band, #update_button_band, #delete_button_band, #add_button_venue, #update_button_venue, #delete_button_venue {
   width: 80px;
 }
