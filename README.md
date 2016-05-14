@@ -21,7 +21,8 @@ A program to track bands and the venues where they've played concerts. Users are
 
 ## Known Bugs
 
-_Please contact me if you find bugs_
+* There is no feature to prevent duplication data when user input new Bands or Venues.
+* "Add Venues to a Band" and "Add Bands to a Venue" still do not have feature to prevent duplication adding.
 
 ## Support and contact details
 
