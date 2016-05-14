@@ -28,7 +28,7 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Bands");
     assertThat(pageSource()).contains("Venues");
   }
-// Band test section ---------------
+// Band test section --------------------
   @Test
   public void bandDoesNotExistTest() {
     goTo("http://localhost:4567/");
@@ -82,7 +82,7 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("AC/DC");
   }
 
-// Venue test section --------------
+// Venue test section -------------------
   @Test
   public void venueDoesNotExistTest() {
     goTo("http://localhost:4567/");
@@ -135,7 +135,8 @@ public class AppTest extends FluentTest {
     goTo(url);
     assertThat(pageSource()).contains("Pioneer Square");
   }
-////////////////////////////////////////////////
+  
+// Join table test section --------------------
   //
   // @Test
   // public void venueIsAddedToBandTest() {

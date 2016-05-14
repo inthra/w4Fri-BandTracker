@@ -1,6 +1,10 @@
 <h1>$venue.getName()</h1>
 <hr>
-
+<div class="row container">
+  <a href="/" class="btn btn-info">Home</a>
+  <a href="/venues" class="btn btn-info">Edit this venue</a>
+</div>
+<hr>
 <div class="row">
   #if ($venue.getBands().size() != 0)
     <div class="col-sm-5">
@@ -15,22 +19,19 @@
 
   #if ($allBands.size() !=0 )
     <div class="col-sm-5">
-      <h3>Add a venue to this venue:</h3>
+      <h3>Add a band to this venue:</h3>
 
-      <form action="/add_venues" method="post">
+      <form action="/add_bands" method="post">
         <label for="venue_id">Select a venue</label>
         <select id="venue_id" name="venue_id" type="text">
           #foreach($venue in $allBands)
             <option value="$venue.getId()"> $venue.getName() </option>
           #end
         </select>
+        <br>
+        <br>
         <button type="submit" class="btn btn-info">Add venue to this venue</button>
       </form>
     </div>
   #end
 </div>
-
-<a href="/venues" class="btn btn-info">Edit this venue</a>
-<br>
-<br>
-<a href="/" class="btn btn-info">Home</a>
