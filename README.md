@@ -17,10 +17,11 @@ Databases:
 * Development database is called "band_tracker_test". The development database should be created by duplicating from production database.
 * There are three tables in the production database: "bands", "venues", and "bands_venues".
 * SQL database dump file is named band_tracker.sql
+* The app uses many-to-many relationship database style.
 
 ## Setup/Installation Requirements
 
-* _Link to repository: https://github.com/inthra_
+* _Link to repository: https://github.com/inthra/w4Fri-BandTracker.git_
 * _Download this app to your computer_
 * _Java, Gradle, and Postgres apps need to be installed on your computer_
 * _Run "gradle run" on command line and go to url "localhost:4567" on a web browser_
