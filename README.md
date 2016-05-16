@@ -16,6 +16,7 @@ Databases:
 * Production database is called "band_tracker"
 * Development database is called "band_tracker_test". The development database should be created by duplicating from production database.
 * There are three tables in the production database: "bands", "venues", and "bands_venues".
+* SQL database dump file is named band_tracker.sql
 
 ## Setup/Installation Requirements
 
@@ -30,12 +31,12 @@ Databases:
 * Open another terminal and run "psql". These process will give you ability to create databases and tables.
 
   In PSQL:
-  =# CREATE DATABASE band_tracker;
-  =# \c band_tracker;
-  band_tracker=# CREATE TABLE bands (id serial PRIMARY KEY, name varchar);
-  band_tracker=# CREATE TABLE venues (id serial PRIMARY KEY, name varchar);
-  band_tracker=# CREATE TABLE bands_venues (id serial PRIMARY KEY, band_id int, venue_id int);
-  band_tracker=# CREATE DATABASE band_tracker_test WITH TEMPLATE band_tracker;
+*  =# CREATE DATABASE band_tracker;
+*  =# \c band_tracker;
+*  band_tracker=# CREATE TABLE bands (id serial PRIMARY KEY, name varchar);
+*  band_tracker=# CREATE TABLE venues (id serial PRIMARY KEY, name varchar);
+*  band_tracker=# CREATE TABLE bands_venues (id serial PRIMARY KEY, band_id int, venue_id int);
+*  band_tracker=# CREATE DATABASE band_tracker_test WITH TEMPLATE band_tracker;
 
 ## Known Bugs
 
